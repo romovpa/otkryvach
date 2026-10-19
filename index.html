@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Открывач — читаем по-русски</title>
+<meta name="description" content="Открывач — игра для iPhone, которая учит читать по-русски тех, кто уже говорит по-русски. Поддержка и ответы на вопросы. Otkryvach: an iPhone game that teaches Russian speakers to read Cyrillic. Support and FAQ.">
+<style>
+  :root {
+    --bg: #faf7f0;
+    --card: #ffffff;
+    --ink: #151b2c;
+    --muted: #5a6275;
+    --line: #e6e0d2;
+    --accent: #8f5d00;
+    --accent-soft: #fff1cc;
+    --tile: #f5f5f0;
+    --tile-ink: #121829;
+    --tile-edge: #d9d3c4;
+    --arc: #2f8fd8;
+    --stress: #c0392b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0f1f;
+      --card: #1a2138;
+      --ink: #eef0f6;
+      --muted: #a8afc2;
+      --line: #2a3350;
+      --accent: #ffc947;
+      --accent-soft: #2b2a22;
+      --tile: #f5f5f0;
+      --tile-ink: #121829;
+      --tile-edge: #f5f5f0;
+      --arc: #73c7fa;
+      --stress: #ff7469;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  nav.lang { display: flex; justify-content: flex-end; gap: 14px; font-size: 15px; }
+  nav.lang a { text-decoration: none; font-weight: 600; }
+
+  .hero { text-align: center; padding: 28px 0 8px; }
+  .tiles { display: inline-flex; gap: 10px; margin: 8px 0 6px; flex-wrap: nowrap; }
+  .syl { display: inline-flex; gap: 4px; position: relative; padding-bottom: 12px; }
+  .syl::after {
+    content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 9px;
+    border-bottom: 3px solid var(--arc); border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  }
+  .t {
+    width: clamp(28px, 8.6vw, 46px); height: clamp(36px, 10.4vw, 56px);
+    display: inline-flex; align-items: center; justify-content: center; position: relative;
+    background: var(--tile); color: var(--tile-ink); border: 1px solid var(--tile-edge);
+    border-radius: 9px; font: 700 clamp(17px, 5vw, 27px)/1 ui-rounded, -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+  }
+  .t.s::before {
+    content: ""; position: absolute; top: 3px; left: 54%; width: 3px; height: 8px;
+    background: var(--stress); border-radius: 2px; transform: rotate(35deg);
+  }
+  h1 { font: 800 clamp(30px, 7vw, 40px)/1.15 ui-rounded, -apple-system, system-ui, sans-serif; margin: 14px 0 6px; }
+  .lead { font-size: 19px; color: var(--muted); margin: 0 auto; max-width: 34em; }
+  .pill { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); font-size: 15px; font-weight: 600; }
+
+  section { margin-top: 40px; }
+  h2 { font-size: 24px; line-height: 1.25; margin: 0 0 12px; }
+  h3 { font-size: 18px; margin: 22px 0 6px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 6px; margin: 14px 0; }
+  .card h3:first-child { margin-top: 0; }
+  ul { padding-left: 1.2em; margin: 6px 0 14px; }
+  li { margin: 4px 0; }
+  .help {
+    background: var(--accent-soft); border-radius: 16px; padding: 18px; margin: 18px 0;
+  }
+  .help p { margin: 0 0 8px; }
+  .btn {
+    display: inline-block; margin: 6px 0 4px; padding: 11px 18px; border-radius: 12px;
+    background: var(--accent); color: var(--bg); font-weight: 700; text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0 8px; }
+  footer { margin-top: 40px; font-size: 14px; color: var(--muted); text-align: center; }
+  footer a { color: var(--muted); }
+  .small { font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="lang" aria-label="Язык / Language">
+    <a href="#ru" lang="ru">Русский</a>
+    <a href="#en" lang="en">English</a>
+  </nav>
+
+  <header class="hero">
+    <div class="tiles" aria-hidden="true">
+      <span class="syl"><span class="t">О</span><span class="t">Т</span></span>
+      <span class="syl"><span class="t">К</span><span class="t">Р</span><span class="t">Ы</span></span>
+      <span class="syl"><span class="t">В</span><span class="t s">А</span><span class="t">Ч</span></span>
+    </div>
+    <h1>Открывач</h1>
+    <p class="lead">Прочитай слово вслух — и сундук откроется.<br><span lang="en">Read the word aloud, and the chest opens.</span></p>
+    <span class="pill">iPhone · iOS 16+ · бесплатно / free</span>
+  </header>
+
+  <!-- ================= RU ================= -->
+  <main>
+  <section id="ru" lang="ru">
+    <h2>Читаем по‑русски</h2>
+    <p>Открывач — игра для тех, кто уже говорит по-русски, но пока не умеет читать. Например, для тех, кто растёт в русскоязычной семье за границей и читать научился на другом языке. Или для взрослых, которые понимают каждое слово на слух, а кириллица для них всё ещё шифр. Игра подходит всей семье.</p>
+
+    <div class="card">
+      <h3>Как это устроено</h3>
+      <ul>
+        <li><b>Сундуки.</b> На экране слово: прочитай его вслух, и сундук распахнётся. Чтение проверяет распознавание русской речи, встроенное в iPhone. Над ударной гласной стоит знак ударения, а дужки под буквами делят слово на слоги, как в букваре.</li>
+        <li><b>Подсказки.</b> Нажми на букву — услышишь её звук, нажми ещё раз — увидишь латинскую подсказку. Подсказки стоят монет.</li>
+        <li><b>Печать.</b> Слушаешь слово и набираешь его на русской клавиатуре прямо в игре. Ошибки подсвечиваются красным.</li>
+        <li><b>Шифр.</b> Весь алфавит с пояснениями на английском и озвученными примерами. Отдельно помечены «ложные друзья»: В, Е, Н, Р, С, У, Х, Я.</li>
+        <li><b>Трофеи.</b> Смешные стикеры с мемными фразами (ими можно поделиться) и 23 достижения.</li>
+        <li>Каждая буква тренируется отдельно: интервальные повторения (FSRS) подбирают слова со слабыми буквами.</li>
+      </ul>
+      <p class="small">Без рекламы, без покупок, без регистрации. Мы не собираем никаких данных: прогресс хранится только на устройстве. <a href="privacy.html#ru">Политика конфиденциальности</a>.</p>
+    </div>
+
+    <h2 style="margin-top:36px">Поддержка</h2>
+    <div class="help">
+      <p><b>Нашли ошибку, есть вопрос или идея?</b> Напишите в GitHub Issues. Опишите, что случилось, и укажите модель iPhone и версию iOS. Нужен бесплатный аккаунт GitHub.</p>
+      <a class="btn" href="https://github.com/romovpa/otkryvach/issues">Написать в GitHub Issues</a>
+      <p class="small">Обсуждения там публичные: пожалуйста, не публикуйте личные данные.</p>
+    </div>
+
+    <h3>Игра меня не слышит или не принимает слово</h3>
+    <ul>
+      <li>Проверьте, что у Открывача есть доступ к микрофону и распознаванию речи: <i>Настройки → Открывач</i> (или <i>Настройки → Конфиденциальность и безопасность</i>).</li>
+      <li>Начинайте читать, когда кнопка станет <b>зелёной</b> («Слушаю… читай!»). Слушает игра 5 секунд, нажмите кнопку ещё раз, чтобы закончить раньше. Читайте слово целиком и чётко.</li>
+      <li>После 5 неудачных попыток появится «Слушать слово», после 10 — «Открыть без чтения →». В обоих случаях сундук не принесёт монет.</li>
+      <li>Если на iPhone добавлена русская клавиатура и включена диктовка, iOS часто может распознавать русскую речь прямо на устройстве.</li>
+      <li>Без микрофона можно играть в «Печать», там говорить не нужно.</li>
+    </ul>
+
+    <h3>Почему сгорели монеты, когда я открыл «Шифр»?</h3>
+    <p>Это защита от подглядывания: если во время чтения заглянуть в алфавит, текущий сундук больше не приносит монет. Уже накопленные монеты и уровень не пропадают.</p>
+
+    <h3>Как начать заново?</h3>
+    <p>Нажмите на шестерёнку вверху экрана «Сундуки» → «Сбросить прогресс». Если удалить приложение, весь прогресс тоже удалится.</p>
+
+    <h3>Синхронизируется ли прогресс между устройствами?</h3>
+    <p>Нет. Аккаунтов нет, и прогресс хранится только на этом iPhone.</p>
+  </section>
+
+  <hr>
+
+  <!-- ================= EN ================= -->
+  <section id="en" lang="en">
+    <h2>Learn to read the Russian you already speak</h2>
+    <p>Открывач (Otkryvach, “the Opener”) is an iPhone game for people who speak Russian but can’t read it yet. That might be someone growing up in a Russian-speaking family abroad who learned to read in another language, or an adult who understands every word by ear but still finds Cyrillic a secret code. It works for the whole family.</p>
+
+    <div class="card">
+      <h3>How it works</h3>
+      <ul>
+        <li><b>Chests (Сундуки).</b> Read the word on screen aloud and a treasure chest bursts open. The iPhone’s built-in Russian speech recognition checks the reading. Stress marks and syllable arcs help, just like in a Russian primer.</li>
+        <li><b>Hints.</b> Tap a letter to hear its sound; tap again for a Latin hint. Hints cost coins.</li>
+        <li><b>Typing (Печать).</b> Hear a word and type it on the built-in Russian keyboard. Mistakes are shown in red.</li>
+        <li><b>Cipher (Шифр).</b> The whole alphabet with English explanations and spoken examples, with warnings about the “false friends” В, Е, Н, Р, С, У, Х and Я.</li>
+        <li><b>Trophies (Трофеи).</b> Funny Russian meme-phrase stickers you can share, plus 23 achievements.</li>
+        <li>Every letter is tracked separately: spaced repetition (FSRS) picks words that train your weakest letters.</li>
+      </ul>
+      <p class="small">No ads, no purchases, no sign-up. No data is collected: progress stays on your device. <a href="privacy.html#en">Privacy Policy</a>.</p>
+    </div>
+
+    <h2 style="margin-top:36px">Support</h2>
+    <div class="help">
+      <p><b>Found a bug, have a question or an idea?</b> Open an issue on GitHub. Describe what happened and include your iPhone model and iOS version. You’ll need a free GitHub account.</p>
+      <a class="btn" href="https://github.com/romovpa/otkryvach/issues">Open a GitHub issue</a>
+      <p class="small">Issues are public, so please don’t post personal information.</p>
+    </div>
+
+    <h3>The game doesn’t hear me or won’t accept the word</h3>
+    <ul>
+      <li>Make sure Открывач can use the Microphone and Speech Recognition: <i>Settings → Открывач</i> (or <i>Settings → Privacy &amp; Security</i>).</li>
+      <li>Start reading when the button turns <b>green</b> («Слушаю… читай!»). It listens for 5 seconds; tap again to stop sooner. Read the whole word clearly, in Russian.</li>
+      <li>After 5 missed tries, «Слушать слово» (listen to the word) appears; after 10, «Открыть без чтения →» (open without reading). Either way, that chest pays no coins.</li>
+      <li>With a Russian keyboard added and Dictation turned on, iOS can often recognise Russian speech right on the device.</li>
+      <li>No microphone? The Печать (typing) tab needs no speaking.</li>
+    </ul>
+
+    <h3>Why did I lose coins when I opened Шифр?</h3>
+    <p>It’s an anti-peeking rule: looking at the alphabet in the middle of a word means the current chest pays no coins. Coins you’ve already banked and your level are kept.</p>
+
+    <h3>How do I start over?</h3>
+    <p>Tap the gear at the top of the Сундуки screen → «Сбросить прогресс». Deleting the app also deletes all progress.</p>
+
+    <h3>Does progress sync between devices?</h3>
+    <p>No. There are no accounts, and progress is stored only on that iPhone.</p>
+  </section>
+  </main>
+
+  <footer>
+    <p><a href="privacy.html">Политика конфиденциальности · Privacy Policy</a> · <a href="https://github.com/romovpa/otkryvach/issues">GitHub Issues</a></p>
+    <p>© 2026 Peter Romov</p>
+  </footer>
+</div>
+</body>
+</html>
